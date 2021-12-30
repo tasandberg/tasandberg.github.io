@@ -27,3 +27,5 @@ fields:
     maxSize: 64
   label: image
   description: Optional cover image
+pages:
+- content/blog/fatal-a-branch-named-gh-pages-already-exists.md
