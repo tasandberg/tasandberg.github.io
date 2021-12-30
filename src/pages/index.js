@@ -25,13 +25,15 @@ const IndexPage = () => (
         formats={["auto", "webp", "avif"]}
       />
     </div>
-
+    <h1>Hi</h1>
     <p>
       Hi! I'm a freelance software engineer based in Oakland, CA. This site is
       my repository for all things coding and programming, though I mostly focus
       on full stack web development.{" "}
       <Link to="/about">More about that here</Link>.
     </p>
+    <h1>Work</h1>
+    <h2></h2>
   </Layout>
 )
 

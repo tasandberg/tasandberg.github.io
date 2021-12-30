@@ -29,8 +29,10 @@ const Header = ({ siteTitle }) => (
       <h2 style={{ margin: 0, flex: 2 }}>
         <Link
           to="/"
+          className="brand-link"
           style={{
             textDecoration: `none`,
+            color: "black",
           }}
         >
           {siteTitle}
