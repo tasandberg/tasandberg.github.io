@@ -18,17 +18,15 @@ My deploy script in my `package.json` looks like this:
  ...
  "deploy": "gatsby build && gh-pages -d public",
  ...
- ```
- 
- but running it produced the error `fatal: A branch named 'gh-pages' already exists.`
- 
- ![fatal: A branch named 'gh-pages' already exists.](/uploads/screen-shot-2021-12-30-at-1-38-14-pm.png)
- 
- It just made no sense. The simple fix was:
- 
- ```sh
- # from project root
- rm -rf node_modules/.cache/gh-pages/
- ```
- 
- Turns out to be some bug in the way gh-pages caches builds or assets. Had too many things to do to dig in further but hopefully this helps someone.
+```
+
+but running it produced the error `fatal: A branch named 'gh-pages' already exists.`
+![fatal: A branch named 'gh-pages' already exists.](src/images/screen-shot-2021-12-30-at-1-38-14-pm.png)
+It just made no sense. The simple fix was:
+
+```sh
+# from project root
+rm -rf node_modules/.cache/gh-pages/
+```
+
+Turns out to be some bug in the way gh-pages caches builds or assets. Had too many things to do to dig in further but hopefully this helps someone.
