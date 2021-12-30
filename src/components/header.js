@@ -41,7 +41,7 @@ const Header = ({ siteTitle }) => (
           display: "flex",
           flexWrap: "nowrap",
           flex: 1,
-          alignItems: "flex-end",
+          alignItems: "center",
           justifyContent: "space-between",
           flexDirection: "row",
         }}
