@@ -1,0 +1,43 @@
+---
+label: work history item
+hide_body: false
+fields:
+- name: employer
+  type: text
+  config:
+    required: false
+  label: employer
+- name: start_date
+  type: datetime
+  label: start date
+  description: ''
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: end_date
+  type: datetime
+  label: end date
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: job_title
+  type: text
+  config:
+    required: false
+  label: job title
+- name: technologies
+  type: tag_list
+  default: []
+  label: technologies
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: image
+  description: square image for the employer
+pages:
+- content/work-history/bugcrowd.md

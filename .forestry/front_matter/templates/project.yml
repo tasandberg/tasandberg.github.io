@@ -1,0 +1,40 @@
+---
+label: project
+hide_body: false
+fields:
+- name: name
+  type: text
+  config:
+    required: false
+  label: name
+  description: name of project
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: image
+  description: square picture for the project
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: description
+  description: blurb about the project<br>
+- name: date
+  type: datetime
+  label: date
+  description: start date of project
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: technologies
+  type: tag_list
+  default: []
+  label: technologies
+  description: technologies used in this project
