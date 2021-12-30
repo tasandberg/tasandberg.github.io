@@ -2,10 +2,15 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
+const links = [
+  { text: "projects", to: "/projects" },
+  { text: "about", to: "/about" },
+  { text: "hire", to: "/hire" },
+]
+
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -13,20 +18,38 @@ const Header = ({ siteTitle }) => (
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        padding: `1.45rem 0`,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h2 style={{ margin: 0, flex: 2 }}>
         <Link
           to="/"
           style={{
-            color: `white`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
         </Link>
-      </h1>
+      </h2>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "nowrap",
+          flex: 1,
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          flexDirection: "row",
+        }}
+      >
+        <Link to="/page-2/">about</Link> <br />
+        <Link to="/using-typescript/">hire me</Link> <br />
+        <Link to="/using-ssr">projects</Link> <br />
+      </div>
     </div>
   </header>
 )
