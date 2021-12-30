@@ -48,9 +48,11 @@ const Header = ({ siteTitle }) => (
           flexDirection: "row",
         }}
       >
-        <Link to="/page-2/">about</Link> <br />
-        <Link to="/using-typescript/">hire me</Link> <br />
-        <Link to="/using-ssr">projects</Link> <br />
+        {links.map(({ to, text }) => (
+          <Link key={`header-link-${to}`} to={to}>
+            {text}
+          </Link>
+        ))}
       </div>
     </div>
   </header>
