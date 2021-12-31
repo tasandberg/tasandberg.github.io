@@ -13,11 +13,14 @@ $font-family-monospace: monospace;
 
 // Navbar overrides
 .navbar-brand {
-  font-family: "Domine";
+  font-family: $font-family-monospace;
+  text-transform: lowercase;
 }
 
 // $primary: #d06060;
 $link-color: #d14f4f;
+
+$font-size-root: 18px;
 
 @import "~bootstrap/scss/bootstrap.scss";
 

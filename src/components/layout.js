@@ -10,10 +10,11 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Seo from "./seo"
 import "../styles.scss"
 import { Container } from "react-bootstrap"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -33,9 +34,10 @@ const Layout = ({ children }) => {
       }}
     >
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-
+      <Seo title={title} />
       <main>
         <div className="pt-5 mx-auto px-2" style={{ maxWidth: "680px" }}>
+          <h1>{title}</h1>
           {children}
         </div>
       </main>
@@ -52,6 +54,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
+  title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 }
 

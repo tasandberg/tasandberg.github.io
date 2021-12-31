@@ -4,15 +4,19 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Container } from "react-bootstrap"
 
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <Row>
-      <Col>
-        <div className="d-flex">
-          <div className="flex-shrink-0 justify-content-center">
+    <Container>
+      <Row>
+        <Col
+          xs={12}
+          md={3}
+          className="justify-content-center flex-direction-row justify-content-md-end d-flex mb-3 mb-md-0"
+        >
+          <div>
             <StaticImage
               src="../images/profile-pic.jpg"
               alt="Profile picture"
@@ -23,24 +27,25 @@ const IndexPage = () => (
               formats={["auto", "webp", "avif"]}
             />
           </div>
-          <div className="flex-grow-1 ms-3">
-            <p>
-              <strong className="font-monospace">Hello world!</strong>
-            </p>
-            <p>
-              My name is Tim Sandberg. I'm a freelance software engineer based
-              in Oakland, CA. This site is my repository for all things coding
-              and programming. I'm primarily a full-stack web developer, but I
-              also dabble in game development and IoT hardware projects.
-            </p>
-            <p>
-              I'm also a musician and{" "}
-              <a href="https://timsandberg.com">film composer</a>.
-            </p>
-          </div>
-        </div>
-      </Col>
-    </Row>
+        </Col>
+        <Col>
+          <p className="text-center text-md-start">
+            <strong className="font-monospace">Hello world!</strong>
+          </p>
+          <p>
+            My name is Tim Sandberg. I'm a freelance software engineer based in
+            Oakland, CA. This site is my repository for all things coding and
+            programming. I'm primarily a full-stack web developer, but I also
+            dabble in game development and IoT hardware projects. Down to
+            collaborate!
+          </p>
+          <p>
+            I'm also a musician and{" "}
+            <a href="https://timsandberg.com">film composer</a>.
+          </p>
+        </Col>
+      </Row>
+    </Container>
   </Layout>
 )
 

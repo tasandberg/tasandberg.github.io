@@ -6,8 +6,7 @@ import { Container, Nav, Navbar } from "react-bootstrap"
 const links = [
   { text: "blog", to: "/blog" },
   { text: "projects", to: "/projects" },
-  { text: "about", to: "/about" },
-  { text: "hire", to: "/hire" },
+  { text: "work", to: "/work" },
 ]
 
 const Header = ({ siteTitle }) => (
@@ -20,7 +19,12 @@ const Header = ({ siteTitle }) => (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
           {links.map(({ text, to }) => (
-            <Link className="nav-link" activeClassName="active" to={to}>
+            <Link
+              key={`header-link-${to}`}
+              className="nav-link"
+              activeClassName="active"
+              to={to}
+            >
               {text}
             </Link>
           ))}

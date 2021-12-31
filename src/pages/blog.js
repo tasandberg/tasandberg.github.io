@@ -1,8 +1,6 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
-
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from "../components/layout"
 import { Badge, Card } from "react-bootstrap"
 
 export const query = graphql`
@@ -16,7 +14,6 @@ export const query = graphql`
           title
           date(formatString: "LL")
           tags
-          image
         }
         excerpt(pruneLength: 200)
       }
@@ -25,9 +22,7 @@ export const query = graphql`
 `
 
 const BlogIndex = ({ data }) => (
-  <Layout>
-    <Seo title="Blog" />
-    <h1>Blog</h1>
+  <Layout title="Blog">
     {data.allMarkdownRemark.nodes.map(n => (
       <Card bg="light border-0">
         <Card.Body className="">
