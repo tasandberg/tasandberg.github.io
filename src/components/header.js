@@ -31,7 +31,6 @@ const Header = ({ siteTitle }) => (
         <Link
           to="/"
           className="brand-link"
-          activeStyle={{ color: "red" }}
           style={{
             textDecoration: `none`,
             color: "black",
@@ -51,7 +50,11 @@ const Header = ({ siteTitle }) => (
         }}
       >
         {links.map(({ to, text }) => (
-          <Link key={`header-link-${to}`} to={to}>
+          <Link
+            key={`header-link-${to}`}
+            to={to}
+            activeStyle={{ color: "red" }}
+          >
             {text}
           </Link>
         ))}
