@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 const links = [
+  { text: "blog", to: "/blog" },
   { text: "projects", to: "/projects" },
   { text: "about", to: "/about" },
   { text: "hire", to: "/hire" },
@@ -30,6 +31,7 @@ const Header = ({ siteTitle }) => (
         <Link
           to="/"
           className="brand-link"
+          activeStyle={{ color: "red" }}
           style={{
             textDecoration: `none`,
             color: "black",
