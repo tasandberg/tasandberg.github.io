@@ -1,5 +1,5 @@
 ---
-technologies:
+tags:
   - react native
   - ruby on rails
   - docker

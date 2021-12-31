@@ -43,10 +43,12 @@ const Layout = ({ children, title }) => {
       </main>
 
       <footer className="footer mt-auto py-3">
-        <Container>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <Container className="text-center">
+          <div>
+            © 2021-{new Date().getFullYear()} Tim Sandberg. Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>.
+          </div>
         </Container>
       </footer>
     </div>

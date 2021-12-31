@@ -1,7 +1,7 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Badge, Card, CardGroup, Col, Container, Row } from "react-bootstrap"
+import { Badge, Card, Col, Container, Row } from "react-bootstrap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 export const query = graphql`
   query {
@@ -9,8 +9,7 @@ export const query = graphql`
       nodes {
         frontmatter {
           name
-          date(formatString: "LL")
-          technologies
+          tags
           image {
             childImageSharp {
               gatsbyImageData(width: 200, placeholder: BLURRED)
@@ -25,7 +24,7 @@ export const query = graphql`
 `
 
 const ProjectCard = ({ project }) => {
-  const { name, data, technologies, image } = project.frontmatter
+  const { name, tags, image } = project.frontmatter
   return (
     <div>
       <Card className="border-0">
@@ -38,7 +37,8 @@ const ProjectCard = ({ project }) => {
               <Col>
                 <h3>{name}</h3>
                 <div dangerouslySetInnerHTML={{ __html: project.html }} />
-                {technologies.map(t => (
+                <p>Technologies used:</p>
+                {tags.map(t => (
                   <Badge pill bg="secondary me-2" key={name + t}>
                     {t}
                   </Badge>
