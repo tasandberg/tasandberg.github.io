@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
-import { Card } from "react-bootstrap"
+import { Badge, Card } from "react-bootstrap"
 
 export const query = graphql`
   query {
@@ -15,6 +15,7 @@ export const query = graphql`
         frontmatter {
           title
           date(formatString: "LL")
+          tags
           image
         }
         excerpt(pruneLength: 200)
@@ -28,15 +29,22 @@ const BlogIndex = ({ data }) => (
     <Seo title="Blog" />
     <h1>Blog</h1>
     {data.allMarkdownRemark.nodes.map(n => (
-      <Card className="border-0">
-        <Card.Body className="px-0">
+      <Card bg="light border-0">
+        <Card.Body className="">
           <Card.Title>
             <Link style={{ textDecoration: "none" }} to={`/${n.fields.slug}`}>
-              {n.frontmatter.title}
+              <h3>{n.frontmatter.title}</h3>
             </Link>
           </Card.Title>
           <Card.Subtitle className="mb-2 small text-muted">
             {n.frontmatter.date}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2">
+            {n.frontmatter.tags.map(t => (
+              <Badge pill bg="secondary me-2" key={n.frontmatter.title + t}>
+                {t}
+              </Badge>
+            ))}
           </Card.Subtitle>
           <Card.Text>{n.excerpt}</Card.Text>
           <Card.Link className="text-muted" to={`/${n.fields.slug}`} as={Link}>

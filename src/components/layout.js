@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 
       <main>
-        <div className="pt-5 mx-auto px-2" style={{ maxWidth: "800px" }}>
+        <div className="pt-5 mx-auto px-2" style={{ maxWidth: "680px" }}>
           {children}
         </div>
       </main>

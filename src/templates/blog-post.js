@@ -1,13 +1,27 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import { Badge } from "react-bootstrap"
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
     <Layout>
       <div>
-        <h1>{post.frontmatter.title}</h1>
+        <header className="mb-4">
+          <h1>{post.frontmatter.title}</h1>
+          <p className="small text-muted">{post.frontmatter.date}</p>
+          <p>
+            {post.frontmatter.tags.map(t => (
+              <Badge pill bg="secondary me-2" key={post.frontmatter.title + t}>
+                {t}
+              </Badge>
+            ))}
+          </p>
+        </header>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <p>
+          <Link to="/blog">← Blog home</Link>
+        </p>
       </div>
     </Layout>
   )
@@ -18,6 +32,8 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date(formatString: "LL")
+        tags
       }
     }
   }
