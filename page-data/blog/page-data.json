@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-blog-js",
+    "path": "/blog/",
+    "result": {"data":{"allMarkdownRemark":{"nodes":[{"fields":{"slug":"blog/fatal-a-branch-named-gh-pages-already-exists"},"frontmatter":{"title":"fatal: A branch named 'gh-pages' already exists.","date":"December 30, 2021","tags":["gatsby","reactjs","github pages"]},"excerpt":"A small attempt to save someone else some headscratching and pain over this silly little error. Early on in developing this site, I was using the  npm package to do some preliminary deployments of the…"}]}},"pageContext":{}},
+    "staticQueryHashes": ["3649515864","63159454"]}
