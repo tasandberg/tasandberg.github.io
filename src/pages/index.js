@@ -31,8 +31,6 @@ const IndexPage = () => (
       repository for all things coding and programming, though I mostly focus on
       full stack web development. <Link to="/about">More about that here</Link>.
     </p>
-    <h1>Work</h1>
-    <h2></h2>
   </Layout>
 )
 
