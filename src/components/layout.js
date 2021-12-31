@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "../styles.scss"
+import { Container } from "react-bootstrap"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,28 +25,29 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 800,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+    <div
+      style={{
+        height: `100%`,
+        display: `flex`,
+        flexDirection: `column`,
+      }}
+    >
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
+      <main>
+        <div className="pt-5 mx-auto px-2" style={{ maxWidth: "800px" }}>
+          {children}
+        </div>
+      </main>
+
+      <footer className="footer mt-auto py-3">
+        <Container>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+        </Container>
+      </footer>
+    </div>
   )
 }
 

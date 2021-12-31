@@ -1,1 +1,29 @@
+// $font-family-sans-serif: "Open Sans", system-ui, -apple-system;
+// $headings-font-family: "Domine";
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1000px,
+  xxl: 1200px,
+);
+
+$font-family-monospace: monospace;
+
+// Navbar overrides
+.navbar-brand {
+  font-family: "Domine";
+}
+
+// $primary: #d06060;
+$link-color: #d14f4f;
+
 @import "~bootstrap/scss/bootstrap.scss";
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}

@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
+import { Card } from "react-bootstrap"
 
 export const query = graphql`
   query {
@@ -16,7 +17,7 @@ export const query = graphql`
           date(formatString: "LL")
           image
         }
-        excerpt(pruneLength: 100)
+        excerpt(pruneLength: 200)
       }
     }
   }
@@ -27,22 +28,23 @@ const BlogIndex = ({ data }) => (
     <Seo title="Blog" />
     <h1>Blog</h1>
     {data.allMarkdownRemark.nodes.map(n => (
-      <Link to={`/${n.fields.slug}`}>
-        <div
-          style={{
-            border: "1px solid #888",
-            padding: "1rem 0.5rem",
-            margin: "2rem 0px",
-            borderRadius: "15px",
-          }}
-        >
-          <h3>{n.frontmatter.title}</h3>
-          <p>{n.frontmatter.date}</p>
-          <p>{n.excerpt}</p>
-        </div>
-      </Link>
+      <Card className="border-0">
+        <Card.Body className="px-0">
+          <Card.Title>
+            <Link style={{ textDecoration: "none" }} to={`/${n.fields.slug}`}>
+              {n.frontmatter.title}
+            </Link>
+          </Card.Title>
+          <Card.Subtitle className="mb-2 small text-muted">
+            {n.frontmatter.date}
+          </Card.Subtitle>
+          <Card.Text>{n.excerpt}</Card.Text>
+          <Card.Link className="text-muted" to={`/${n.fields.slug}`} as={Link}>
+            Read more...
+          </Card.Link>
+        </Card.Body>
+      </Card>
     ))}
-    <Link to="/">Go back to the homepage</Link>
   </Layout>
 )
 
