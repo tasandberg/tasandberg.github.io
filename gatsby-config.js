@@ -43,11 +43,14 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-prismjs`,
+          },
+          {
+            resolve: `gatsby-remark-images`,
             options: {
-              prompt: {
-                user: "timmehs",
-                host: "example",
-              },
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 680,
             },
           },
         ],
@@ -55,11 +58,5 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: "gatsby-plugin-typography",
-    //   options: {
-    //     pathToConfigModule: "src/utils/typography",
-    //   },
-    // },
   ],
 }

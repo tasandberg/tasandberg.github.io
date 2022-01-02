@@ -36,7 +36,7 @@ const Layout = ({ children, title }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Seo title={title} />
       <main>
-        <div className="pt-5 mx-auto px-2" style={{ maxWidth: "680px" }}>
+        <div className="pt-2 mx-auto px-2" style={{ maxWidth: "680px" }}>
           <h1>{title}</h1>
           {children}
         </div>

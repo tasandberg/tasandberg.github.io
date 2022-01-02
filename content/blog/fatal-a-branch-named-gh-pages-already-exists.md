@@ -24,7 +24,7 @@ My deploy script in my `package.json` looks like this:
 ```
 
 but running it produced the error `fatal: A branch named 'gh-pages' already exists.`
-![](src/images/screen-shot-2021-12-30-at-1-38-14-pm.png)
+![error message](../../src/images/gatsby-astronaut.png)
 It just made no sense.
 
 ## The fix
