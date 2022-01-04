@@ -13,9 +13,9 @@ image: ''
 
 This website was my second rodeo building a website with Gatsby.js. My first use of gatsby was for my page dedicated to my work as a composer, which can be found here: [https://www.timsandberg.com/](https://www.timsandberg.com/ "https://www.timsandberg.com/").
 
-You might notice that this website is a lot more stripped down. Like, a LOT more stripped down. My composer site is meant to be cinematic, so it's pretty extra.
+You might notice that this website is a lot more stripped down. Like, a LOT more stripped down. My composer site is meant to be cinematic, so it's pretty extra. I used threejs, a wrapper for webgl, and even wrote custom shaders for the music visualization. Oh, and there's a media player UI. What have I done..
 
-This website, by contrast, is meant to be a shining example of simplicity. It comes after years of observing other programmer's personal sites and blogs, and how great it can be when there are minimal bells and whistles, and just good, to-the-point content.
+Since I've got the other website to scratch my itch for flare, I'm hoping to keep this site simple and to-the-point so I can focus on actually writing some content now and then.
 
 In brief, this site uses:
 
@@ -26,5 +26,3 @@ In brief, this site uses:
 Since this is my second site built with Gatsby and Forestry, I've developed something of a well-beaten path which I hope to write a guide for in my next post.
 
 For now I'll just say: welcome!
-
-# 
