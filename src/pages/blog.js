@@ -25,7 +25,7 @@ const BlogIndex = ({ data }) => (
   <Layout title="Blog">
     {data.allMarkdownRemark.nodes.map(n => (
       <Card bg="light border-0">
-        <Card.Body className="blog-post">
+        <Card.Body className="blog-post-preview">
           <Card.Title>
             <Link style={{ textDecoration: "none" }} to={`/${n.fields.slug}`}>
               <h3>{n.frontmatter.title}</h3>
