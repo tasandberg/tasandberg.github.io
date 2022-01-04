@@ -33,7 +33,7 @@ Without further ado...
 
 # Basic set up
 
-![Screenshot of gatsby-default-starter home page](https://www.gatsbyjs.com/static/3833f4ebd008c83959677433b5672679/5803e/d1c71f638d7d35fc92aadba5fa13990c.webp "Gatsby default starter screenshot")Using the [gatsby-default-starter](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default "Gatsby default starter") is a great place to start. It takes care of a lot of the boiler plate and makes it clear where to fill in your own values. Set your site name and metaData in `gatsby-config.js`.
+Using the [gatsby-default-starter](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default "Gatsby default starter") is a great place to start. It takes care of a lot of the boiler plate and makes it clear where to fill in your own values. Set your site name and metaData in `gatsby-config.js`.
 
 The key pieces of boiler plate here that I really like are the layout component and the SEO component are already set up for you. More info on those here:
 
@@ -82,6 +82,7 @@ $font-size-root: 18px;
 ```
 
 I use the prebuilt bootstrap components from [https://react-bootstrap.github.io/](https://react-bootstrap.github.io/ "https://react-bootstrap.github.io/") wherever possible, for navbars and such to avoid what would be an avalanche of classNames in my react code. For example, my 36-line header component:
+
 ```javascript
 import * as React from "react"
 import { Link } from "gatsby"
@@ -120,4 +121,5 @@ const Header = () => (
 
 export default Header
 ```
+
 # Building content types
