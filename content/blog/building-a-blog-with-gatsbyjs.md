@@ -1,17 +1,16 @@
 ---
 tags:
-  - javascript
-  - static website
-  - react
-  - gatsby
+- javascript
+- static website
+- react
+- gatsby
 title: Building a blog with Gatsbyjs
-date:
-image: ""
----
+date: 
+image: ''
 
-<center>
-![Gatsby logo](../../src/images/gatsby-icon.png)
-</center>
+---
+![Gatsby Logo](https://timmehs.s3.us-west-1.amazonaws.com/gatsby-icon.png)
+
 This website was my second rodeo building a website with Gatsby.js. My first use of gatsby was for my page dedicated to my work as a composer, which can be found here: [https://www.timsandberg.com/](https://www.timsandberg.com/ "https://www.timsandberg.com/").
 
 You might notice that this website is a lot more stripped down. Like, a LOT more stripped down. My composer site is meant to be cinematic, so it's pretty extra.
