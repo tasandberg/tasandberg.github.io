@@ -1,0 +1,23 @@
+/**
+ * Blog
+ * */
+.blog-post-preview {
+  & > * {
+    margin-bottom: 1rem;
+  }
+}
+
+.blog-post-body {
+  img {
+    margin: 0 auto;
+  }
+
+  *,
+  * > * {
+    line-height: 2;
+  }
+  li {
+    line-height: 1.8;
+    margin: 1rem 0;
+  }
+}

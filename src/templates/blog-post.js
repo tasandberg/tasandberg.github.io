@@ -7,9 +7,10 @@ export default function BlogPost({ data }) {
   return (
     <Layout>
       <div>
-        <header className="mb-4">
+        <header>
           <h1>{post.frontmatter.title}</h1>
           <p className="small text-muted">{post.frontmatter.date}</p>
+
           <p>
             {post.frontmatter.tags.map(t => (
               <Badge pill bg="secondary me-2" key={post.frontmatter.title + t}>
@@ -37,6 +38,11 @@ export const query = graphql`
         title
         date(formatString: "LL")
         tags
+        image {
+          childImageSharp {
+            gatsbyImageData(width: 500, placeholder: BLURRED)
+          }
+        }
       }
     }
   }

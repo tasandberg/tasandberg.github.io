@@ -11,7 +11,8 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Seo from "./seo"
-import "../styles.scss"
+import "../styles/bootstrap.scss"
+import "../styles/blog.scss"
 import { Container } from "react-bootstrap"
 
 const Layout = ({ children, title }) => {

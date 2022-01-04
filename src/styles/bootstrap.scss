@@ -35,18 +35,3 @@ body,
 #gatsby-focus-wrapper {
   height: 100%;
 }
-
-/**
- * Blog
- * */
-.blog-post-preview {
-  & > * {
-    margin-bottom: 1rem;
-  }
-}
-
-.blog-post-body {
-  img {
-    margin: 0 auto;
-  }
-}
