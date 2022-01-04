@@ -6,7 +6,7 @@ tags:
 - gatsby
 title: Building a blog with Gatsbyjs
 date: 
-image: ''
+image: "/src/images/gatsby-icon.png"
 
 ---
 ![Gatsby Logo](../../src/images/gatsby-icon.png)
