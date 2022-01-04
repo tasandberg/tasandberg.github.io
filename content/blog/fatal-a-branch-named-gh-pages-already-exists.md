@@ -5,7 +5,7 @@ tags:
   - github pages
 title: "fatal: A branch named 'gh-pages' already exists."
 date: 2021-12-30T08:00:00Z
-image: ""
+image: "/src/images/ghpages-error.png"
 ---
 
 A small attempt to save someone else some headscratching and pain over this silly little error.
