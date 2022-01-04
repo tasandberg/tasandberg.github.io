@@ -16,6 +16,7 @@
     "gatsby-plugin-sharp": "^4.4.0",
     "gatsby-plugin-typography": "^4.4.0",
     "gatsby-remark-images": "^6.4.0",
+    "gatsby-remark-normalize-paths": "^1.1.0",
     "gatsby-remark-prismjs": "^6.4.0",
     "gatsby-source-filesystem": "^4.4.0",
     "gatsby-transformer-remark": "^5.4.0",

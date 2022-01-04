@@ -45,6 +45,12 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
           },
           {
+            resolve: "gatsby-remark-normalize-paths",
+            options: {
+              pathFields: ["image", "cover"],
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               // It's important to specify the maxWidth (in pixels) of

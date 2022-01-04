@@ -5,7 +5,10 @@ import { Badge, Card } from "react-bootstrap"
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: { fields: { collection: { eq: "blog" } } }) {
+    allMarkdownRemark(
+      filter: { fields: { collection: { eq: "blog" } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
         fields {
           slug
@@ -24,7 +27,7 @@ export const query = graphql`
 const BlogIndex = ({ data }) => (
   <Layout title="Blog">
     {data.allMarkdownRemark.nodes.map(n => (
-      <Card bg="light border-0">
+      <Card bg="light border-0 mb-3">
         <Card.Body className="blog-post-preview">
           <Card.Title>
             <Link style={{ textDecoration: "none" }} to={`/${n.fields.slug}`}>

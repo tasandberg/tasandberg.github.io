@@ -1,15 +1,15 @@
 ---
 tags:
-- javascript
-- static website
-- react
-- gatsby
+  - javascript
+  - static website
+  - react
+  - gatsby
 title: Building a blog with Gatsbyjs
-date: 
+date:
 image: "/src/images/gatsby-icon.png"
-
 ---
-![Gatsby Logo](../../src/images/gatsby-icon.png)
+
+![Gatsby Logo](/src/images/gatsby-icon.png)
 
 This website was my second rodeo building a website with Gatsby.js. My first use of gatsby was for my page dedicated to my work as a composer, which can be found here: [https://www.timsandberg.com/](https://www.timsandberg.com/ "https://www.timsandberg.com/").
 
@@ -19,4 +19,4 @@ This website, by contrast, is meant to be a shining example of simplicity. It co
 
 ### Why Gatsbyjs?
 
-![](/src/images/gatsby-astronaut.png)
+![Gatsby Astronaut](/src/images/gatsby-astronaut.png)
