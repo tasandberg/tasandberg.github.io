@@ -10,7 +10,7 @@ image: ""
 
 A small attempt to save someone else some headscratching and pain over this silly little error.
 
-Early on in developing this site, I was using the `gh-pages` npm package to do some preliminary deployments of the site, just to get the plumbing all working.
+Early on in developing this site, I was using the [gh-pages](https://github.com/tschaub/gh-pages) npm package to do some preliminary deployments of the site, just to get the plumbing all working.
 
 ## The problem
 
@@ -23,8 +23,12 @@ My deploy script in my `package.json` looks like this:
   }
 ```
 
-but running it produced the error `fatal: A branch named 'gh-pages' already exists.`
-![error message](../../src/images/gatsby-astronaut.png)
+but running it produced the error:
+
+```shell
+fatal: A branch named 'gh-pages' already exists.
+```
+
 It just made no sense.
 
 ## The fix

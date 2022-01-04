@@ -25,16 +25,16 @@ const BlogIndex = ({ data }) => (
   <Layout title="Blog">
     {data.allMarkdownRemark.nodes.map(n => (
       <Card bg="light border-0">
-        <Card.Body className="">
+        <Card.Body className="blog-post">
           <Card.Title>
             <Link style={{ textDecoration: "none" }} to={`/${n.fields.slug}`}>
               <h3>{n.frontmatter.title}</h3>
             </Link>
           </Card.Title>
-          <Card.Subtitle className="mb-2 small text-muted">
+          <Card.Subtitle className="small text-muted">
             {n.frontmatter.date}
           </Card.Subtitle>
-          <Card.Subtitle className="mb-2">
+          <Card.Subtitle>
             {n.frontmatter.tags.map(t => (
               <Badge pill bg="secondary me-2" key={n.frontmatter.title + t}>
                 {t}
