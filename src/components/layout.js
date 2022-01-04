@@ -34,7 +34,7 @@ const Layout = ({ children, title }) => {
         flexDirection: `column`,
       }}
     >
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header />
       <Seo title={title} />
       <main>
         <div
