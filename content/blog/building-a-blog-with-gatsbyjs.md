@@ -4,7 +4,7 @@ tags:
 - static website
 - react
 - gatsby
-title: Building a blog with Gatsbyjs
+title: Building a blog with Gatsbyjs and Forestry.io
 date: 2022-01-04T08:00:00Z
 image: "/src/images/gatsby-icon.png"
 
@@ -19,8 +19,15 @@ This website, by contrast, is meant to be a shining example of simplicity. It co
 
 ### Why Gatsbyjs?
 
-![Gatsby Astronaut](/src/images/gatsby-astronaut.png)
+To keep this brief, I'll just link to this sexy marketing page [https://www.gatsbyjs.com/why-gatsby/](https://www.gatsbyjs.com/why-gatsby/ "https://www.gatsbyjs.com/why-gatsby/"). In particular I've been drawn to gatsby for the following reasons
 
-Here's another image:
+* Graphql interface for all content in site keeps data organized and easy to sort, filter, and query.
+* Automated image processing (have you noticed the loading placeholders as you click around the site?).
+* The freedom to build and style the site just as you would an SPA in reactjs.
+* Really easy to hook into some great free CMS systems, I'll be discussing how I use [https://forestry.io/](https://forestry.io/ "Forestry") for this site.
 
-![](/src/images/profile-pic.jpg)
+I will admit it's probably the most DIY and configuration-heavy framework. That being said there are some great pre-made [gatsby starters](https://www.gatsbyjs.com/starters/ "Gatsby Starters") that can be customized or at least tinkered with so you can see how things are done.
+
+Without further ado...
+
+### 
