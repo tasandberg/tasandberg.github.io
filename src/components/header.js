@@ -1,5 +1,4 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Container, Nav, Navbar } from "react-bootstrap"
 
@@ -9,7 +8,7 @@ const links = [
   { text: "work", to: "/work" },
 ]
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <Navbar bg="dark" expand="lg" variant="dark">
     <Container fluid>
       <Navbar.Brand to="/" as={Link}>
@@ -33,13 +32,5 @@ const Header = ({ siteTitle }) => (
     </Container>
   </Navbar>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
