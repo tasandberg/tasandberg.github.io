@@ -1,6 +1,7 @@
-// $font-family-sans-serif: "Open Sans", system-ui, -apple-system;
-// $headings-font-family: "Domine";
-
+/** 
+ * Bootstrap Overrides
+ * https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ */
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -11,22 +12,35 @@ $container-max-widths: (
 
 $font-family-monospace: monospace;
 
-// Navbar overrides
 .navbar-brand {
   font-family: $font-family-monospace;
   text-transform: lowercase;
 }
 
-// $primary: #d06060;
 $link-color: #d14f4f;
 
 $font-size-root: 18px;
 
+/**
+ * Bootstrap
+ * */
 @import "~bootstrap/scss/bootstrap.scss";
 
+/**
+ * General 
+ */
 html,
 body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
+}
+
+/**
+ * Blog
+ * */
+.blog-post {
+  & > * {
+    margin-bottom: 1rem;
+  }
 }
