@@ -28,5 +28,6 @@ fields:
   label: image
   description: Optional cover image
 pages:
+- content/blog/build-a-blog-with-gatsby-and-forestry-part-1.md
 - content/blog/building-a-blog-with-gatsbyjs.md
 - content/blog/fatal-a-branch-named-gh-pages-already-exists.md
