@@ -54,11 +54,15 @@ You can now `cd` into your new directory and run `npm run develop` to see your s
 
 Tada 🎉:
 
+![](/src/images/gatsby-default-starter-sn.png)
+
 Opening the directory in your text editor, you should see a similar structure to this:
 
-![](/src/images/screen-shot-2022-01-05-at-10-32-17-am.png)
+![](/src/images/screen-shot-2022-01-05-at-10-49-53-am.png)
 
-Now lets change a bunch of stuff. Not too much though, I promise.
+_Note: if you use yarn instead of npm like me, you can remove the package-lock.json file and run `yarn` to initialize a yarn.lock file._
+
+Now lets change a bunch of stuff.
 
 # Configuration
 
@@ -68,32 +72,26 @@ Here we'll just run through some initial basic config, which should serve as a l
 // <root>/gatsby-config.js
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://timmehs.github.io/gatsby-tut", // <-- change
-    title: "Gatsby Tutorial", // <--- change
+    title: `Timmehs' Tutorial Blog`, // <-- Change
+    description: `A blog tutorial using Gatsbyjs, Github, and Forestry CMS`, // <-- Change
+    author: `Tim Sandberg`, // <-- Change
+    siteUrl: `https://timmehs.github.io/tutorial-blog`, // <-- Change
   },
   plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-transformer-remark",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
-      __key: "images",
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: "./src/pages/",
-      },
-      __key: "pages",
-    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    // Delete `gatsby-plugin-manifest` entry
   ],
-};
+}
 ```
+
+I think it's fair to say that PWA features are outside of the scope of this tutorial.
