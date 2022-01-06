@@ -375,8 +375,6 @@ This section will consist of the following steps:
 
 Sound like a lot? Well it is, kind of. Let's get started!
 
-## 1. gatsby-transformer-remark
-
 ```shell
 yarn add gatsby-transformer-remark
 ```
