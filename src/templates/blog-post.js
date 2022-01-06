@@ -6,9 +6,9 @@ export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
     <Layout>
-      <div>
-        <header>
-          <h1>{post.frontmatter.title}</h1>
+      <div className="mx-1 px-sm-0">
+        <header className="mb-4">
+          <h1 className="display-4 ">{post.frontmatter.title}</h1>
           <p className="small text-muted">{post.frontmatter.date}</p>
 
           <p>

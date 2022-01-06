@@ -1,19 +1,19 @@
 ---
 tags:
-- javascript
-- blog
-- gatsby
-- tutorial
+  - javascript
+  - blog
+  - gatsby
+  - tutorial
 title: Build a blog with Gatsby, Github, and Forestry CMS (Part 1)
 date: 2022-01-05T08:00:00Z
-image: ''
-
+image: ""
 ---
+
 This is a tutorial for anyone wishing to build a free, CMS-powered blog using Gatsbyjs, Github, and Forestry. Some benefits of this approach are:
 
-* Free hosting on github pages.
-* Lovely blog-writing experience using a CMS text editor, with integrated media library.
-* Build the site layout in react and sass with built-in hot reloading.
+- Free hosting on github pages.
+- Lovely blog-writing experience using a CMS text editor, with integrated media library.
+- Build the site layout in react and sass with built-in hot reloading.
 
 Here is a streamlined tutorial for building and deploying a blog in GatsbyJS, leaving room for your own customization and styling.
 
@@ -23,20 +23,20 @@ OK, here's the game plan:
 
 Part 1 (this post):
 
-* Basic setup.
-* Styles and bootstrap
-* Site and SEO configuration
-* Writing blog posts in markdown and displaying them using Gatsby's graphql data layer.
-* Blogpost images using `gatsby-remark-images`
-* Publish to github pages
-* Other hosting options
+- Basic setup.
+- Styles and bootstrap
+- Site and SEO configuration
+- Writing blog posts in markdown and displaying them using Gatsby's graphql data layer.
+- Blogpost images using `gatsby-remark-images`
+- Publish to github pages
+- Other hosting options
 
 Part 2:
 
-* Connecting your blog with Forestry CMS
-* Beyond blog-posts: CMS editors are nice! Let's use them for more than blog posts.
-* Typography
-* Publishing from Forestry (Github action)
+- Connecting your blog with Forestry CMS
+- Beyond blog-posts: CMS editors are nice! Let's use them for more than blog posts.
+- Typography
+- Publishing from Forestry (Github action)
 
 # Basic setup
 
@@ -46,11 +46,11 @@ Gatsby makes this _pretty_ easy for you. We're going to use the gatsby-default-s
 npx gatsby new tutorial-blog https://github.com/gatsbyjs/gatsby-starter-default
 ```
 
-***
+---
 
 _Note on gatsby starters: I've found most of the_ [_gatsby starters_](https://www.gatsbyjs.com/starters/ "https://www.gatsbyjs.com/starters/") _to be impractical for actually building on top of, but they are great to look through for examples of configuration._
 
-***
+---
 
 You can now `cd` into your new directory and run `npm run develop` to see your site on [http://localhost:8000](http://localhost:8000 "http://localhost:8000").
 
@@ -71,7 +71,7 @@ Now lets change a bunch of stuff.
 Here we'll just run through some initial basic config, which should serve as a little tour of important places in your gatsby project.
 
 ```javascript
-// <root>/gatsby-config.js
+// gatsby-config.js
 module.exports = {
   siteMetadata: {
     title: `Timmehs' Tutorial Blog`, // <-- Change
@@ -102,16 +102,19 @@ I'm going to say that PWA features are outside of the scope of this tutorial, so
 
 You'll notice a couple pages in the starter are examples for some neat features: server-side-rendered pages ([SSR](https://www.gatsbyjs.com/docs/reference/rendering-options/server-side-rendering/ "Server Side Rendering")) and deferred static generation ([DSG](https://www.gatsbyjs.com/docs/reference/rendering-options/deferred-static-generation/ "Deferred Static Generation")). Gonna give those the `OUT OF SCOPE` stamp as well, so lets delete the following files:
 
-    gatsby-ssr.js
-    src/templates/gatsby-dsg.js
-    src/pages/using-ssr.js
-    src/pages/using-typescript.tsx
+```shell
+gatsby-ssr.js
+src/templates/gatsby-dsg.js
+src/pages/using-ssr.js \
+src/pages/using-typescript.tsx
+```
 
 Since we're deleting the dsg template, we'll need to remove this code so it doesn't try and make a page out of it:
 
 ```javascript
 // gatsby-node.js
 // We'll return to this file later, so just delete the inner lines
+
 exports.createPages = async ({ actions }) => {
   // DELETE ME:
   // const { createPage } = actions
@@ -245,7 +248,7 @@ import PropTypes from "prop-types"
 
 const links = [
   { text: "Blog", to: "/blog" },
-  { text: "About", to: "/about" }
+  { text: "About", to: "/about" },
 ]
 
 const Header = ({ siteTitle }) => (
@@ -280,14 +283,14 @@ Header.propTypes = {
 export default Header
 ```
 
-***
+---
 
-_Note:  As with any bootstrap classes or react-bootstrap components used in this tutorial, you can read up on customization options at their respective websites:_
+_Note: As with any bootstrap classes or react-bootstrap components used in this tutorial, you can read up on customization options at their respective websites:_
 
-* [_https://react-bootstrap.github.io_](https://react-bootstrap.github.io "https://react-bootstrap.github.io")
-* [_https://getbootstrap.com/_](https://getbootstrap.com/ "https://getbootstrap.com/")
+- [_https://react-bootstrap.github.io_](https://react-bootstrap.github.io "https://react-bootstrap.github.io")
+- [_https://getbootstrap.com/_](https://getbootstrap.com/ "https://getbootstrap.com/")
 
-***
+---
 
 Next let's update our `index.js` and add the two other pages linked to in our new navbar.
 
@@ -355,11 +358,11 @@ export default AboutPage
 
 As you will see, any files under the `src/pages` directory are automatically turned into pages in your website by gatsby.
 
-***
+---
 
 _Note: As you click around via the header navigation, you may notice that navigation is super snappy. That's because we're using Gatsby's `<Link />` component, which has some magic to it (more on that_ [_here_](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/ "https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/")_)._
 
-***
+---
 
 # Blog posts from markdown
 
