@@ -131,7 +131,7 @@ With those changes, and the updates to your `siteMetadata` in `gatsby-config.js`
 
 ![](/src/images/default-starter-updated-sn.png)
 
-Your layout component is grabbing that updated info using graphql and plugging it into the Header component. Here's that query shown here on line 11:
+Your layout component is grabbing that updated info using graphql and plugging it into the Header component. Here's that query shown here:
 
 ```javascript
 // src/components/layout.js

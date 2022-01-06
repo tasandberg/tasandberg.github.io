@@ -22,10 +22,6 @@
     margin-bottom: 1rem;
   }
 
-  code {
-    font-size: 85%;
-  }
-
   pre {
     margin-bottom: 1rem;
     margin-top: 0;
@@ -33,6 +29,7 @@
 
   code.language-text {
     // From github :)
+    font-size: 85%;
     background-color: rgba(174, 184, 193, 0.2);
     border-radius: 6px;
     padding: 0.2em 0.4em;
@@ -40,8 +37,7 @@
     color: black;
   }
 
-  *,
-  * > * {
+  p {
     line-height: 1.8rem;
   }
 }

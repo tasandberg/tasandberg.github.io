@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Seo from "./seo"
 import "../styles/bootstrap.scss"
+import "../styles/prism-theme.css"
 import "../styles/blog.scss"
 import { Container } from "react-bootstrap"
 
