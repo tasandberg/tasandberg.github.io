@@ -4,7 +4,7 @@ tags:
 - blog
 - gatsby
 - tutorial
-title: Build a blog with Gatsby, Github, and Forestry Part 1
+title: Build a blog with Gatsby, Github, and Forestry CMS (Part 1)
 date: 2022-01-05T08:00:00Z
 image: ''
 
@@ -23,8 +23,8 @@ OK, here's the game plan:
 
 Part 1 (this post):
 
-* Gatsby init, basic setup.
-* Importing bootstrap
+* Basic setup.
+* Styles and bootstrap
 * Site and SEO configuration
 * Writing blog posts in markdown and displaying them using Gatsby's graphql data layer.
 * Blogpost images using `gatsby-remark-images`
@@ -35,20 +35,22 @@ Part 2:
 
 * Connecting your blog with Forestry CMS
 * Beyond blog-posts: CMS editors are nice! Let's use them for more than blog posts.
-* ???
+* Typography
 * Publishing from Forestry (Github action)
 
 # Basic setup
 
-Gatsby makes this _pretty_ easy for you. We're going to use the gatsby-default-starter because it provides some really good boiler plate.
+Gatsby makes this _pretty_ easy for you. We're going to use the gatsby-default-starter because it provides some really good boiler plate for things like Seo, Layout, and Header components.
 
 ```bash
 npx gatsby new tutorial-blog https://github.com/gatsbyjs/gatsby-starter-default
 ```
 
-_Note: "tutorial-blog" will be the name of the site and the directory. This can all be changed later but you may choose to replace it in this command with your own project name._
+***
 
 _Note on gatsby starters: I've found most of the_ [_gatsby starters_](https://www.gatsbyjs.com/starters/ "https://www.gatsbyjs.com/starters/") _to be impractical for actually building on top of, but they are great to look through for examples of configuration._
+
+***
 
 You can now `cd` into your new directory and run `npm run develop` to see your site on [http://localhost:8000](http://localhost:8000 "http://localhost:8000").
 
@@ -159,7 +161,7 @@ This is getting wordy so I'm going to keep explanation to a minimum here:
 
 ```bash
 # Install packages
-yarn install bootstrap react-bootstrap sass
+yarn install bootstrap react-bootstrap sass gatsby-plugin-sass
 
 # Remove old stylesheet
 rm src/components/layout.css
@@ -167,6 +169,31 @@ rm src/components/layout.css
 # Create new styles directory and scss stylesheet
 mkdir src/styles
 touch src/styles/bootstrap.scss
+```
+
+Add gatsby-plugin-sass to plugins:
+
+```javascript
+// gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    ...
+  },
+  plugins: [
+    `gatsby-plugin-sass`, // <-- New
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+  ],
+}
 ```
 
 Update style import in layout.js
@@ -188,13 +215,168 @@ Customize and import bootstrap:
 // src/styles/bootstrap.scss
 
 /** 
- * Bootstrap Overrides
- * https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ * Bootstrap Overrides - full list of customizable variables here:
+ * - https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ * This is my preferred method of customizing bootstrap themes.
  */
-$font-size-root: 20px;
+$primary: #496257;
 
 /**
  * Bootstrap
  * */
 @import "~bootstrap/scss/bootstrap.scss";
+```
+
+To make sure it's working, and our styles are hooked up, lets restart the server and check that everything works at http://localhost:8000.![Bootstrapped home page](/src/images/bootstrapped-sn.png)
+
+# Site structure and navigation
+
+With react-bootstrap, our header component can be simply refactored into a responsive nav header.
+
+![](/src/images/bootstrap-navbar-sn.png)
+
+**src/components/header.js**
+
+```javascript
+import * as React from "react"
+import { Link } from "gatsby"
+import { Container, Nav, Navbar } from "react-bootstrap"
+import PropTypes from "prop-types"
+
+const links = [
+  { text: "Blog", to: "/blog" },
+  { text: "About", to: "/about" }
+]
+
+const Header = ({ siteTitle }) => (
+  <Navbar bg="primary" expand="lg" variant="dark">
+    <Container fluid="lg">
+      <Navbar.Brand to="/" as={Link}>
+        {siteTitle}
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ms-auto">
+          {links.map(({ text, to }) => (
+            <Link
+              key={`header-link-${to}`}
+              className="nav-link"
+              activeClassName="active"
+              to={to}
+            >
+              {text}
+            </Link>
+          ))}
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
+)
+
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+export default Header
+```
+
+***
+
+_Note:  As with any bootstrap classes or react-bootstrap components used in this tutorial, you can read up on customization options at their respective websites:_
+
+* [_https://react-bootstrap.github.io_](https://react-bootstrap.github.io "https://react-bootstrap.github.io")
+* [_https://getbootstrap.com/_](https://getbootstrap.com/ "https://getbootstrap.com/")
+
+***
+
+Next let's update our `index.js` and add the two other pages linked to in our new navbar.
+
+**src/pages/index.js**
+
+```javascript
+import * as React from "react"
+
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+
+const IndexPage = () => (
+  <Layout>
+    <Seo title="Home" />
+    <h1>Welcome to Timmehs' Tutorial Blog</h1>
+    <p>We've got all things that are good.</p>
+  </Layout>
+)
+
+export default IndexPage
+```
+
+**src/pages/blog.js (new)**
+
+```javascript
+import * as React from "react"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+
+const BlogPage = () => (
+  <Layout>
+    <Seo title="Blog" />
+    <h1>Blog</h1>
+    {/* Blog posts will go here */}
+  </Layout>
+)
+
+export default BlogPage
+```
+
+**src/pages/about.js (new)**
+
+```javascript
+import * as React from "react"
+
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+
+const AboutPage = () => (
+  <Layout>
+    <Seo title="About" />
+    <section>
+      <h1>About</h1>
+      <p>
+        This blog is built with Gatsbyjs, Bootstrap, and Forestry. It is the
+        demo for the tutorial found here:{" "}
+        <a href="https://github.com/Timmehs/tutorial-blog">repo</a>.
+      </p>
+    </section>
+  </Layout>
+)
+
+export default AboutPage
+```
+
+As you will see, any files under the `src/pages` directory are automatically turned into pages in your website by gatsby.
+
+***
+
+_Note: As you click around via the header navigation, you may notice that navigation is super snappy. That's because we're using Gatsby's `<Link />` component, which has some magic to it (more on that_ [_here_](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/ "https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/")_)._
+
+***
+
+# Blog posts from markdown
+
+This section will consist of the following steps:
+
+1. Add `gatsby-transformer-remark` for transpiling markdown files into useable html.
+2. Create your content folder and first two blog posts.
+3. List blog posts on your main `/blog` page using a `pageQuery`.
+4. Update gatsby-config.js to add the content folder as a data source and convert `*.md` files to pages.
+5. List blog posts on your main `/blog` page using a `pageQuery`.
+6. Create a `blog-post.js` template.
+7. Tell gatsby to generate pages for blog posts in `gatsby-node.js`
+
+Sound like a lot? Well it is, kind of. Let's get started!
+
+## 1. gatsby-transformer-remark
+
+```shell
+yarn add gatsby-transformer-remark
 ```
