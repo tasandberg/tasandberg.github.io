@@ -39,6 +39,11 @@ fields:
     maxSize: 64
   label: image
   description: square image for the employer
+- name: employer_url
+  type: text
+  config:
+    required: false
+  label: Employer URL
 pages:
 - content/work-history/bugcrowd.md
 - content/work-history/kenzie-academy.md
