@@ -12,7 +12,7 @@ export const query = graphql`
           tags
           image {
             childImageSharp {
-              gatsbyImageData(width: 200, placeholder: BLURRED)
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -31,8 +31,10 @@ const ProjectCard = ({ project }) => {
         <Card.Body>
           <Container>
             <Row>
-              <Col xs={12} md={4} className="d-flex justify-content-center">
-                <GatsbyImage image={getImage(image)} />
+              <Col xs={12} md={4}>
+                <div className="mb-3 mb-md-0">
+                  <GatsbyImage image={getImage(image)} />
+                </div>
               </Col>
               <Col>
                 <h3>{name}</h3>

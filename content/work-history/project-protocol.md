@@ -17,13 +17,9 @@ image: "../../src/images/pp-icon.png"
 employer_url: https://www.projectprotocol.org/
 ---
 
-A downloadable app that servers as a parole officer rating
-tool. Data is publicly visible yet anonymously submitted.
-This crowdsourced community feedback app aims to produce a more
-equitable relationship between officers and the people
-under their supervision by allowing those on parole to have
-transparency into the most critical relationship of their
-re-entry.
+Joining this team focused on criminal justice reform, I inherited a small react-native prototype. I fleshed this out
+with it's own design system and component library and took it to a fully fledged mobile app, which is now (early 2022) in beta for
+both Android and iOS, backed by an API written in ruby on rails.
 
 Drawing from my experience working alongside some fantastic
 DevOps engineers in the past, I architected and implement

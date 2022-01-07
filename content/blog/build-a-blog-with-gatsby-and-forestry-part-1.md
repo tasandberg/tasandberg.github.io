@@ -19,14 +19,13 @@ Here is a streamlined tutorial for building and deploying a blog in GatsbyJS, le
 
 Gatsby's documentation is fantastic and thorough, but I always find I have to cherry pick across many different documents and repository README's to figure out seemingly basic things so I thought I'd offer a tutorial of how I've gone about it.
 
-OK, here's the game plan:
+Here's the game plan for part 1 (this post):
 
-Part 1 (this post):
-
-- Basic setup.
-- Styles and bootstrap
-- Site and SEO configuration
-- Writing blog posts in markdown and displaying them using Gatsby's graphql data layer.
+- <a href="/blog/build-a-blog-with-gatsby-and-forestry-part-1/#basic-setup">Basic setup</a>
+- <a href="#configuration">Configuration</a>
+- <a href="#styles">Styles</a>
+- <a href="#site-structure-and-navigation">Site structure and navigation</a>
+- <a href="#blog-posts-from-markdown">Blog posts from markdown</a>
 
 # Basic setup
 
@@ -110,7 +109,7 @@ const Layout = ({ children }) => {
 
 You'll also notice the title of the page in the browser tab has updated, this is because the SEO component does the same thing. I like to refactor the Seo component to live within the Layout, but for simplicity's sake let's continue with what we have here.
 
-### Some boilerplate cleanup
+## Some boilerplate cleanup
 
 ---
 

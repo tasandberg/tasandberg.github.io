@@ -24,7 +24,7 @@ const SecondPage = () => (
       When he's not coding, Tim is usually making music. These days he is
       focused on composing music for film and other media. Check that out{" "}
       <a href="https://timsandberg.com">here</a>. He goes wilderness backpacking
-      a few times a year and enjoy photography. Sometimes sometimes he develops
+      a few times a year and enjoys photography. Sometimes sometimes he develops
       his own film:
     </p>
     <Figure>
