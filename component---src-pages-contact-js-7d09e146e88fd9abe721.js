@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[501],{262:function(e,t,a){a.r(t);var l=a(7294),n=a(307);t.default=function(){return l.createElement(n.Z,{title:"Contact"},l.createElement("p",null,"Please get in touch with me via email: ",l.createElement("code",null,"tasandberg")," at"," ",l.createElement("code",null,"gmail")," dot com"))}}}]);
+//# sourceMappingURL=component---src-pages-contact-js-7d09e146e88fd9abe721.js.map
