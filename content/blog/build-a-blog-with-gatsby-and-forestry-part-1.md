@@ -375,8 +375,7 @@ This section will consist of the following steps:
 3. List blog posts on your main `/blog` page using a `pageQuery`.
 4. Update gatsby-config.js to add the content folder as a data source and convert `*.md` files to pages.
 5. List blog posts on your main `/blog` page using a `pageQuery`.
-6. Create a `blog-post.js` template.
-7. Tell gatsby to generate pages for blog posts in `gatsby-node.js`
+6. Define a collection template for blog posts
 
 Sound like a lot? Well it is, kind of. Let's get started!
 
@@ -462,7 +461,7 @@ content/blog/my-second-post.md
 
 **List blog posts at /blog**
 
-Here we add a page query to our `blog.js` page to grab basic information about our posts and list it. 
+Here we add a page query to our `blog.js` page to grab basic information about our posts and list it.
 
 ```javascript
 import { graphql } from "gatsby"
@@ -510,3 +509,67 @@ With that, we have a blog index!
 Make sure to leverage the graphql tool on [http://localhost:8000/___graphql](http://localhost:8000/___graphql "http://localhost:8000/___graphql") whenever you need to prototype a query. It's also a great place to poke around and see how Gatsby creates the data layer. Here's a screenshot from me prototyping this particular query, it even gives you code to copy:
 
 ![](/src/images/graphiql.png)
+
+**Define a blog post template**
+
+Now we create a specially named file under `src/pages` that contains a template for our blog posts. Create a directory named `src/pages/blog`. This will namespace our blog posts to the `/blog` route. Then create a file _carefully_ named:
+
+    src/pages/blog/{MarkdownRemark.parent__(File)__name}.js
+
+This tells Gatsby to generate a page for all MarkdownRemark nodes (all of our .md files) at the route `blog/<file name>`.
+
+We could easily base the routes off of another field, like the title field for example:
+
+    {MarkdownRemark.frontmatter__title}.js
+
+[https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/")
+
+**Link to posts on the blog index**
+
+Update out blog.js page to link the blog title the the post itself:
+
+```javascript
+import { graphql, Link } from "gatsby"
+import * as React from "react"
+import Card from "react-bootstrap/Card"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+
+const BlogPage = ({ data }) => (
+  <Layout>
+    <Seo title="Blog" />
+    <h1>Blog</h1>
+    {data.posts.nodes.map(({ id, frontmatter, parent }) => (
+      <Card key={id} className="mb-3">
+        <Card.Body>
+          <Card.Title>
+            <Link to={`/blog/${parent.name}`}>{frontmatter.title}</Link>
+          </Card.Title>
+          <Card.Subtitle>{frontmatter.date}</Card.Subtitle>
+        </Card.Body>
+      </Card>
+    ))}
+  </Layout>
+)
+
+export const query = graphql`
+  {
+    posts: allMarkdownRemark {
+      nodes {
+        id
+        frontmatter {
+          title
+          date(formatString: "LL")
+        }
+        parent {
+          ... on File {
+            name
+          }
+        }
+      }
+    }
+  }
+`
+
+export default BlogPage
+```
