@@ -429,21 +429,25 @@ _Note the top section is surrounded above and below by the `---` characters, thi
 content/blog/my-first-post.md
 
 ```markdown
-    ---
-    title: My first post
-    date: 2022-01-05
-    ---
-    
-    # Hello, blog!
-    
-    This is my first post made with markdown.
-    As you can see I can do cool things like
-    
-    > Block quotes
-    
-    - and
-    - also
-    - lists
+---
+title: My first post
+date: 2022-01-05
+---
+
+# Hello, blog!
+
+This is my first post made with markdown.
+As you can see I can do cool things like
+
+## Headers
+
+### Headers
+
+#### Headers
+
+- and
+- also
+- lists
 ```
 
 content/blog/my-second-post.md
@@ -516,42 +520,68 @@ Now we create a specially named file under `src/pages` that contains a template 
 
     src/pages/blog/{MarkdownRemark.parent__(File)__name}.js
 
-This tells Gatsby to generate a page for all MarkdownRemark nodes (all of our .md files) at the route `blog/<file name>`.
+This tells Gatsby to generate a page for all MarkdownRemark nodes (all of our .md files) at the route `blog/<file name>`. Read up on more capabilities of the File system route API here: [https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/")
 
-We could easily base the routes off of another field, like the title field for example:
+Lets make our actual template in that file.
 
-    {MarkdownRemark.frontmatter__title}.js
+**src/pages/blog/{MarkdownRemark.parent__(File)__name}.js**
 
-[https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/")
+```javascript
+import React from "react"
+import Layout from "../../components/layout"
+import Seo from "../../components/seo"
+import { graphql, Link } from "gatsby"
+
+export default function BlogPost({ data }) {
+  const { frontmatter, html } = data.post
+
+  return (
+    <Layout>
+      <Seo title="Blogpost" />
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <Link to="/blog">Back to Blog Home</Link>
+    </Layout>
+  )
+}
+
+export const pageQuery = graphql`
+  query ($id: String!) {
+    post: markdownRemark(id: { eq: $id }) {
+      frontmatter {
+        title
+        date(formatString: "LL")
+      }
+      html
+    }
+  }
+`
+```
+
+Now if you visit [http://localhost:8000/blog/my-first-post](http://localhost:8000/blog/my-first-post "http://localhost:8000/blog/my-first-post") you should see your post, all nicely formatted. Well OK, the formatting needs work but you've got bootstrap installed and waiting to be leveraged.
 
 **Link to posts on the blog index**
 
 Update out blog.js page to link the blog title the the post itself:
 
 ```javascript
+// Add Link to imports from gatsby
 import { graphql, Link } from "gatsby"
-import * as React from "react"
-import Card from "react-bootstrap/Card"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+...
 
 const BlogPage = ({ data }) => (
-  <Layout>
-    <Seo title="Blog" />
-    <h1>Blog</h1>
-    {data.posts.nodes.map(({ id, frontmatter, parent }) => (
-      <Card key={id} className="mb-3">
-        <Card.Body>
-          <Card.Title>
-            <Link to={`/blog/${parent.name}`}>{frontmatter.title}</Link>
-          </Card.Title>
-          <Card.Subtitle>{frontmatter.date}</Card.Subtitle>
-        </Card.Body>
-      </Card>
+	...
+      // Wrap the title text in a Gatsby Link component
+      <Card.Title>
+	    <Link to={`/blog/${parent.name}`}>{frontmatter.title}</Link>
+      </Card.Title>
+   	...
     ))}
   </Layout>
 )
 
+// Update the query to get the file name for the post
 export const query = graphql`
   {
     posts: allMarkdownRemark {
@@ -573,3 +603,21 @@ export const query = graphql`
 
 export default BlogPage
 ```
+
+And there you have it:
+
+**/blog**
+
+![](/src/images/blog-index-links.png)
+
+**/blog/my-first-post**
+
+![](/src/images/my-first-post.png)
+
+This post is now a massive monstrosity so I will leave it here.
+
+In the next post we'll cover:
+
+* publishing to github pages
+* connecting with ForestryIO
+* Managing multiple content types
