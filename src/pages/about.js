@@ -38,6 +38,9 @@ const SecondPage = () => (
       </Figure.Caption>
     </Figure>
     <p>He lives in Oakland, CA with his partner and daughter.</p>
+    <p>
+      <Link to="/contact">Contact me</Link>
+    </p>
   </Layout>
 )
 

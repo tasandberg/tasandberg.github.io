@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { Badge, Card, Col, Row } from "react-bootstrap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -78,6 +78,9 @@ const WorkCard = ({ work }) => {
 
 const Work = ({ data }) => (
   <Layout title="Work">
+    <p className="text-muted">
+      For hiring inquiries, <Link to="/contact">contact me here</Link>.
+    </p>
     {data.allMarkdownRemark.nodes.map(n => (
       <WorkCard work={n} key={`${n.frontmatter.name}-project-card`} />
     ))}

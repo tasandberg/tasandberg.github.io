@@ -4,10 +4,16 @@ tags:
   - blog
   - gatsby
   - tutorial
-title: Build a blog with Gatsby, Github, and Forestry CMS (Part 1)
+title: Build a free blog with Gatsby, Github, and Forestry Pt. 1
 date: 2022-01-05T08:00:00.000+00:00
 image: ""
 ---
+
+- <a href="/blog/build-a-blog-with-gatsby-and-forestry-part-1/#basic-setup">Basic setup</a>
+- <a href="#configuration">Configuration</a>
+- <a href="#styles">Styles</a>
+- <a href="#site-structure-and-navigation">Site structure and navigation</a>
+- <a href="#blog-posts-from-markdown">Blog posts from markdown</a>
 
 This is a tutorial for anyone wishing to build a free, CMS-powered blog using Gatsbyjs, Github, and Forestry. Some benefits of this approach are:
 
@@ -18,14 +24,6 @@ This is a tutorial for anyone wishing to build a free, CMS-powered blog using Ga
 Here is a streamlined tutorial for building and deploying a blog in GatsbyJS, leaving room for your own customization and styling.
 
 Gatsby's documentation is fantastic and thorough, but I always find I have to cherry pick across many different documents and repository README's to figure out seemingly basic things so I thought I'd offer a tutorial of how I've gone about it.
-
-Here's the game plan for part 1 (this post):
-
-- <a href="/blog/build-a-blog-with-gatsby-and-forestry-part-1/#basic-setup">Basic setup</a>
-- <a href="#configuration">Configuration</a>
-- <a href="#styles">Styles</a>
-- <a href="#site-structure-and-navigation">Site structure and navigation</a>
-- <a href="#blog-posts-from-markdown">Blog posts from markdown</a>
 
 # Basic setup
 
@@ -78,15 +76,25 @@ module.exports = {
 }
 ```
 
-With those changes, and the updates to your `siteMetadata` in `gatsby-config.js` you should see some changes on your page (after a server restart):
+With those changes, and the updates to your `siteMetadata` in `gatsby-config.js` you should see some changes on your page.
+
+**run**
+
+```shell
+# for yarn
+yarn develop
+
+# for npm
+npm run develop
+```
 
 ![Updated screenshot](/src/images/default-starter-updated-sn.png)
 
 Your layout component is grabbing that updated info using graphql and plugging it into the Header component. Here's that query shown here:
 
-```javascript
-// src/components/layout.js
+**src/components/layout.js**
 
+```javascript
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -117,13 +125,13 @@ _Note: You can let these files and packages be if you want to explore them later
 
 ---
 
-Run
+**run**
 
 ```shell
 yarn remove gatsby-plugin-manifest gatsby-plugin-offline
 ```
 
-Delete the following files:
+**Delete the following files:**
 
 ```shell
 gatsby-ssr.js
@@ -134,8 +142,9 @@ src/pages/using-typescript.tsx
 
 Since we're deleting the dsg template, we'll need to remove this code so it doesn't try and make a page out of it:
 
+**gatsby-node.js**
+
 ```javascript
-// gatsby-node.js
 // We'll return to this file later, so just delete the inner lines
 
 exports.createPages = async ({ actions }) => {
@@ -160,7 +169,7 @@ You can read up on these removed items here, but I've deemed them out of scope f
 
 Add sass and bootstrap to your project. I'll use components from react-bootstrap later on, so best not to skip.
 
-Run
+**run**
 
 ```bash
 # Install packages
