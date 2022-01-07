@@ -6,6 +6,7 @@ const links = [
   { text: "blog", to: "/blog" },
   { text: "projects", to: "/projects" },
   { text: "work", to: "/work" },
+  { text: "about", to: "/about" },
 ]
 
 const Header = () => (
