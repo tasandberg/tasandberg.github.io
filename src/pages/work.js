@@ -8,16 +8,19 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       filter: { fields: { collection: { eq: "workHistory" } } }
+      sort: { fields: frontmatter___start_date, order: DESC }
     ) {
       nodes {
         frontmatter {
           employer
-          start_date(formatString: "LL")
-          end_date(formatString: "LL")
+          employer_url
+          start_date(formatString: "MMMM YYYY")
+          end_date(formatString: "MMMM YYYY")
+          job_title
           technologies
           image {
             childImageSharp {
-              gatsbyImageData(width: 100, placeholder: BLURRED)
+              gatsbyImageData(width: 70, placeholder: BLURRED)
             }
           }
         }
@@ -29,29 +32,37 @@ export const query = graphql`
 `
 
 const WorkCard = ({ work }) => {
-  const { employer, start_date, end_date, technologies, image } =
-    work.frontmatter
+  const {
+    employer,
+    employer_url,
+    job_title,
+    start_date,
+    end_date,
+    technologies,
+    image,
+  } = work.frontmatter
   return (
     <div>
-      <Card className="border-0">
+      <Card className="border-0 mb-3">
         <Card.Body>
           <Row>
-            <Col xs={true} className="d-flex justify-content-end p-0">
+            <Col xs={true} className="d-flex justify-content-end">
               <div>
                 <GatsbyImage objectFit="cover" image={getImage(image)} />
               </div>
             </Col>
             <Col xs={10}>
-              <Card.Title>
-                <h3>{employer}</h3>
-              </Card.Title>
-              <Card.Subtitle>
-                <p className="text-muted">
-                  {start_date} - {end_date}
-                </p>
-              </Card.Subtitle>
+              <div>
+                <a className="fs-5" href={employer_url}>
+                  {employer}
+                </a>
+              </div>
+              <div>{job_title}</div>
+              <p className="text-muted">
+                {start_date} - {end_date || `Present`}
+              </p>
               <div dangerouslySetInnerHTML={{ __html: work.html }} />
-              <p>Technologies used:</p>
+              <p className="mb-0">Technologies used:</p>
               {technologies.map(t => (
                 <Badge pill bg="secondary me-2" key={employer + t}>
                   {t}
