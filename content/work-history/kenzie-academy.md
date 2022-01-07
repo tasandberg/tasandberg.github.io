@@ -3,7 +3,7 @@ technologies:
 - css
 - html5
 - javascript
-employer: Kenzie Academnt
+employer: Kenzie Academy
 start_date: 2019-06-01T07:00:00Z
 end_date: 2019-06-30T07:00:00Z
 job_title: Front-End Curriculum Creator
