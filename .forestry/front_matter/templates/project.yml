@@ -28,3 +28,5 @@ fields:
   default: []
   description: technologies used in this project
   label: tags
+pages:
+- content/projects/timsandberg-dot-com.md
