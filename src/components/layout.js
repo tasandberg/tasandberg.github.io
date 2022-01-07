@@ -7,7 +7,6 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Seo from "./seo"
@@ -17,16 +16,6 @@ import "../styles/blog.scss"
 import { Container } from "react-bootstrap"
 
 const Layout = ({ children, title }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <div
       style={{
