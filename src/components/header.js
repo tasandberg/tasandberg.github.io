@@ -28,6 +28,15 @@ const Header = () => (
               {text}
             </Link>
           ))}
+          {process.env.NODE_ENV === "development" && (
+            <Nav.Link
+              target="_blank"
+              href="/___graphql"
+              style={{ color: "white" }}
+            >
+              graphiQL
+            </Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Container>
