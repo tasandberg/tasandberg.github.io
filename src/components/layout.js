@@ -29,7 +29,7 @@ const Layout = ({ children, title }) => {
       <main>
         <div
           className="pt-2 pt-lg-3 mx-auto px-2"
-          style={{ maxWidth: "680px" }}
+          style={{ maxWidth: "900px" }}
         >
           <h2>{title}</h2>
           {children}
