@@ -1,14 +1,14 @@
 ---
 tags:
-  - javascript
-  - blog
-  - gatsby
-  - tutorial
+- javascript
+- blog
+- gatsby
+- tutorial
 title: Build a free blog with Gatsby, Github, and Forestry Pt. 1
 date: 2022-01-05T08:00:00.000+00:00
-image: ""
----
+image: "/src/images/arnold-francisca-f77bh3inupe-unsplash.png"
 
+---
 - <a href="/blog/build-a-blog-with-gatsby-and-forestry-part-1/#basic-setup">Basic setup</a>
 - <a href="#configuration">Configuration</a>
 - <a href="#styles">Styles</a>
