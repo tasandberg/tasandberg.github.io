@@ -7,7 +7,8 @@ tags:
 - web audio API
 name: timsandberg.com
 image: "/src/images/timsandberg-sn.png"
-date: 2020-01-09T08:00:00Z
+date: 2020-01-09T08:00:00.000+00:00
+website: https://www.timsandberg.com
 
 ---
 My composer homepage, portfolio, and blog. Built with GatsbyJS. The website features a full-page animated music visualizer, as well as a custom media player written in react.
