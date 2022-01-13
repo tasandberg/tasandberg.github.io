@@ -3,28 +3,9 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { Badge, Card, Col, Container, Row } from "react-bootstrap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-export const query = graphql`
-  query {
-    allMarkdownRemark(filter: { fields: { collection: { eq: "projects" } } }) {
-      nodes {
-        frontmatter {
-          name
-          tags
-          image {
-            childImageSharp {
-              gatsbyImageData(placeholder: BLURRED)
-            }
-          }
-        }
-        html
-        excerpt(pruneLength: 200)
-      }
-    }
-  }
-`
 
 const ProjectCard = ({ project }) => {
-  const { name, tags, image } = project.frontmatter
+  const { name, tags, image, website } = project.frontmatter
   return (
     <Card className="border-0 mb-3">
       <Card.Body>
@@ -36,7 +17,14 @@ const ProjectCard = ({ project }) => {
               </div>
             </Col>
             <Col>
-              <h3>{name}</h3>
+              <a
+                href={website}
+                style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <h3>{name}</h3>
+              </a>
               <div dangerouslySetInnerHTML={{ __html: project.html }} />
               <p>Technologies used:</p>
               {tags.map(t => (
@@ -64,3 +52,25 @@ const ProjectIndex = ({ data }) => (
 )
 
 export default ProjectIndex
+
+// Query
+export const query = graphql`
+  query {
+    allMarkdownRemark(filter: { fields: { collection: { eq: "projects" } } }) {
+      nodes {
+        frontmatter {
+          name
+          tags
+          website
+          image {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+        html
+        excerpt(pruneLength: 200)
+      }
+    }
+  }
+`
