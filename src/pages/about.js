@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 
 const SecondPage = () => (
   <Layout title="About">
+    <h2>About Tim</h2>
     <p>
       <small>
         <i>Warning: insufferable third-persion bio incoming</i>

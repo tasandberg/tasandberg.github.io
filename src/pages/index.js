@@ -9,7 +9,7 @@ const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
     <Container>
-      <Row>
+      <Row className="mt-5">
         <Col
           xs={12}
           md={3}

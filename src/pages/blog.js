@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import { Badge, Card, Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image"
 
 export const query = graphql`
@@ -23,6 +23,11 @@ export const query = graphql`
               gatsbyImageData(width: 800)
             }
           }
+          square: image {
+            childImageSharp {
+              gatsbyImageData(width: 300, height: 300)
+            }
+          }
         }
         excerpt(pruneLength: 100)
       }
@@ -37,20 +42,26 @@ const BlogIndex = ({ data }) => {
   const Author = ({ date }) => {
     return (
       <Row>
-        <Col className="d-flex align-items-center">
-          <StaticImage
-            style={{ borderRadius: "50%" }}
-            className="me-1"
-            height={30}
-            width={30}
-            src="../images/author.png"
-          />
-          <div className="d-flex flex-column" style={{ fontSize: "14px" }}>
-            By: Tim
-            <small className="text-muted" style={{ marginTop: "-5px" }}>
-              {date}
-            </small>
-          </div>
+        <Col className="">
+          <Link
+            to="/about"
+            className="d-flex align-items-center text-dark"
+            style={{ textDecoration: "none" }}
+          >
+            <StaticImage
+              style={{ borderRadius: "50%" }}
+              className="me-1"
+              height={30}
+              width={30}
+              src="../images/author.png"
+            />
+            <div className="d-flex flex-column" style={{ fontSize: "14px" }}>
+              By: Tim
+              <small className="text-muted" style={{ marginTop: "-5px" }}>
+                {date}
+              </small>
+            </div>
+          </Link>
         </Col>
       </Row>
     )
@@ -58,60 +69,68 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout title="Blog">
       <Container fluid className="p-0">
-        <Row>
-          <Col>
-            <GatsbyImage
-              image={getImage(firstPost.frontmatter.cover)}
-              className="rounded h-100"
-            />
+        <h2>Blog</h2>
+        <p className="text-muted mb-4">
+          Tutorials, bug fixes, and other thoughts on development.
+        </p>
+        <Row className="mb-5">
+          <Col xs={12} md={6} className="mb-3 mb-md-0">
+            <Link to={"/" + firstPost.fields.slug}>
+              <GatsbyImage
+                image={getImage(firstPost.frontmatter.cover)}
+                alt="Cover photo for the first blog post"
+                className="rounded h-100"
+              />
+            </Link>
           </Col>
           <Col>
-            <h2>{firstPost.frontmatter.title}</h2>
-            <p className="text-muted">
-              <small>
-                {firstPost.excerpt}
-                <br />
-                <Link to={firstPost.fields.slug}>Read more</Link>
-              </small>
-            </p>
-            <p>
-              <Author date={firstPost.frontmatter.date} />
-            </p>
+            <div className="px-2">
+              <h2 className="display-6">{firstPost.frontmatter.title}</h2>
+              <p className="text-muted">
+                <small>
+                  {firstPost.excerpt}
+                  <br />
+                  <Link to={firstPost.fields.slug}>Read more</Link>
+                </small>
+              </p>
+              <p>
+                <Author date={firstPost.frontmatter.date} />
+              </p>
+            </div>
           </Col>
         </Row>
-        <Row></Row>
-        {posts.slice(1).map(n => (
-          <Card bg="light border-0 mb-3">
-            <Card.Body className="blog-post-preview">
-              <Card.Title>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to={`/${n.fields.slug}`}
-                >
-                  <h3>{n.frontmatter.title}</h3>
-                </Link>
-              </Card.Title>
-              <Card.Subtitle className="small text-muted">
-                {n.frontmatter.date}
-              </Card.Subtitle>
-              <Card.Subtitle>
-                {n.frontmatter.tags.map(t => (
-                  <Badge pill bg="secondary me-2" key={n.frontmatter.title + t}>
-                    {t}
-                  </Badge>
-                ))}
-              </Card.Subtitle>
-              <Card.Text>{n.excerpt}</Card.Text>
-              <Card.Link
-                className="text-muted"
-                to={`/${n.fields.slug}`}
-                as={Link}
-              >
-                Read more...
-              </Card.Link>
-            </Card.Body>
-          </Card>
-        ))}
+        <Row>
+          {posts.slice(1).map(n => (
+            <Col xs={12} md={4} className="mb-4 mb-md-0">
+              <Row>
+                <Col xs={3} md={12}>
+                  <div className="h-100">
+                    <Link to={"/" + n.fields.slug}>
+                      <GatsbyImage
+                        image={getImage(n.frontmatter.square)}
+                        alt="Cover photo for the first blog post"
+                        className="rounded mb-3"
+                      />
+                    </Link>
+                  </div>
+                </Col>
+                <Col>
+                  <h5 className="display-6 fs-4">{n.frontmatter.title}</h5>
+                  <p className="text-muted">
+                    <small>
+                      {n.excerpt}
+                      <br />
+                      <Link to={"/" + n.fields.slug}>Read more</Link>
+                    </small>
+                  </p>
+                  <p>
+                    <Author date={n.frontmatter.date} />
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          ))}
+        </Row>
       </Container>
     </Layout>
   )

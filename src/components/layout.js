@@ -15,7 +15,7 @@ import "../styles/prism-theme.css"
 import "../styles/blog.scss"
 import { Container } from "react-bootstrap"
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title, maxWidth }) => {
   return (
     <div
       style={{
@@ -28,10 +28,9 @@ const Layout = ({ children, title }) => {
       <Seo title={title} />
       <main>
         <div
-          className="pt-2 pt-lg-3 mx-auto px-2"
-          style={{ maxWidth: "900px" }}
+          className="pt-2 pt-lg-3 mx-auto px-2 mt-3"
+          style={{ maxWidth: maxWidth || "900px" }}
         >
-          <h2>{title}</h2>
           {children}
         </div>
       </main>

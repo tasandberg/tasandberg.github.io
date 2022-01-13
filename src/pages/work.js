@@ -78,6 +78,7 @@ const WorkCard = ({ work }) => {
 
 const Work = ({ data }) => (
   <Layout title="Work">
+    <h2>Work history</h2>
     <p className="text-muted">
       For hiring inquiries, <Link to="/contact">contact me here</Link>.
     </p>

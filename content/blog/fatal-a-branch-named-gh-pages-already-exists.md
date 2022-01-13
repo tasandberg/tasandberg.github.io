@@ -1,13 +1,13 @@
 ---
 tags:
-- gatsby
-- reactjs
-- github pages
-title: 'fatal: A branch named ''gh-pages'' already exists.'
+  - gatsby
+  - reactjs
+  - github pages
+title: "Fatal: A branch named 'gh-pages' already exists."
 date: 2021-12-30T08:00:00.000+00:00
 image: "/src/images/sarah-kilian-52jrtc2s_ve-unsplash.png"
-
 ---
+
 A small attempt to save someone else some headscratching and pain over this silly little error.
 
 Early on in developing this site, I was using the [gh-pages](https://github.com/tschaub/gh-pages) npm package to do some preliminary deployments of the site, just to get the plumbing all working.
