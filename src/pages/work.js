@@ -4,32 +4,30 @@ import Layout from "../components/layout"
 import { Badge, Card, Col, Row } from "react-bootstrap"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fields: { collection: { eq: "workHistory" } } }
-      sort: { fields: frontmatter___start_date, order: DESC }
-    ) {
-      nodes {
-        frontmatter {
-          employer
-          employer_url
-          start_date(formatString: "MMMM YYYY")
-          end_date(formatString: "MMMM YYYY")
-          job_title
-          technologies
-          image {
-            childImageSharp {
-              gatsbyImageData(width: 70, placeholder: BLURRED)
-            }
+export const query = graphql`{
+  allMarkdownRemark(
+    filter: {fields: {collection: {eq: "workHistory"}}}
+    sort: {frontmatter: {start_date: DESC}}
+  ) {
+    nodes {
+      frontmatter {
+        employer
+        employer_url
+        start_date(formatString: "MMMM YYYY")
+        end_date(formatString: "MMMM YYYY")
+        job_title
+        technologies
+        image {
+          childImageSharp {
+            gatsbyImageData(width: 70, placeholder: BLURRED)
           }
         }
-        html
-        excerpt(pruneLength: 200)
       }
+      html
+      excerpt(pruneLength: 200)
     }
   }
-`
+}`
 
 const WorkCard = ({ work }) => {
   const {
