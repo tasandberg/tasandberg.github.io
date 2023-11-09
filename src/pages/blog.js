@@ -4,36 +4,34 @@ import Layout from "../components/layout"
 import { Container, Row, Col } from "react-bootstrap"
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image"
 
-export const query = graphql`
-  query {
-    posts: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "blog" } } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          date(formatString: "LL")
-          tags
-          cover: image {
-            childImageSharp {
-              gatsbyImageData(width: 800)
-            }
-          }
-          square: image {
-            childImageSharp {
-              gatsbyImageData(width: 300, height: 300)
-            }
-          }
-        }
-        excerpt(pruneLength: 100)
+export const query = graphql`{
+  posts: allMarkdownRemark(
+    filter: {fields: {collection: {eq: "blog"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    nodes {
+      fields {
+        slug
       }
+      frontmatter {
+        title
+        date(formatString: "LL")
+        tags
+        cover: image {
+          childImageSharp {
+            gatsbyImageData(width: 800)
+          }
+        }
+        square: image {
+          childImageSharp {
+            gatsbyImageData(width: 300, height: 300)
+          }
+        }
+      }
+      excerpt(pruneLength: 100)
     }
   }
-`
+}`
 
 const BlogIndex = ({ data }) => {
   const posts = data.posts.nodes
